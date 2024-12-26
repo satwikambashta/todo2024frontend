@@ -78,10 +78,10 @@ const Home = () => {
         withCredentials: true,
       })
       .then((res) => {
-        setTasks(res.data.tasks);
+        setTasks(res.data.tasks || []);
       })
       .catch((e) => {
-        toast.error(e.response.data.message);
+        toast.error(e.response?.data?.message || "An error occurred");
       });
   }, [refresh]);
 
@@ -89,43 +89,43 @@ const Home = () => {
 
   return (
     <div className="container">
-      <div className="login">
-        <section>
-          <form onSubmit={submitHandler}>
-            <input
-              type="text"
-              placeholder="Title"
-              required
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Description"
-              required
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-
-            <button disabled={loading} type="submit">
-              Add Task
-            </button>
-          </form>
-        </section>
-      </div>
+      <h1>My Tasks</h1>
+      <form onSubmit={submitHandler} className="add-task-form">
+        <input
+          type="text"
+          placeholder="Title"
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          required
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button disabled={loading} type="submit">
+          Add Task
+        </button>
+      </form>
 
       <section className="todosContainer">
-        {tasks.map((i) => (
-          <TodoItem
-            title={i.title}
-            description={i.description}
-            isCompleted={i.isCompleted}
-            updateHandler={updateHandler}
-            deleteHandler={deleteHandler}
-            id={i._id}
-            key={i._id}
-          />
-        ))}
+        {tasks.length > 0 ? (
+          tasks.map((i) => (
+            <TodoItem
+              key={i._id}
+              id={i._id}
+              title={i.title}
+              description={i.description}
+              isCompleted={i.isCompleted}
+              updateHandler={updateHandler}
+              deleteHandler={deleteHandler}
+            />
+          ))
+        ) : (
+          <p>No tasks available</p>
+        )}
       </section>
     </div>
   );

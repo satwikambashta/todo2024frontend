@@ -13,21 +13,29 @@ function App() {
   const { setUser, setIsAuthenticated, setLoading } = useContext(Context);
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(`${server}/users/me`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setUser(res.data.user);
-        setIsAuthenticated(true);
-        setLoading(false);
-      })
-      .catch((error) => {
+    const checkAuthentication = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(`${server}/users/me`, {
+          withCredentials: true,
+        });
+
+        if (res.status === 200 && res.data.user) {
+          setUser(res.data.user);
+          setIsAuthenticated(true);
+        } else {
+          throw new Error("Invalid response");
+        }
+      } catch (error) {
+        console.error("Authentication failed:", error);
         setUser({});
         setIsAuthenticated(false);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    checkAuthentication();
   }, []);
 
   return (
@@ -37,7 +45,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Toaster />
     </Router>

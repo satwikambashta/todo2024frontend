@@ -1,34 +1,5 @@
 @media (max-width: 900px) {
-    .header {
-        flex-direction: column;
-        padding: 1rem;
-        align-items: flex-start;
-    }
-
-    .header .nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .header .auth-buttons {
-        margin-top: 1rem;
-    }
-
-    .login {
-        padding: 2rem;
-    }
-
-    .login>section {
-        padding: 2rem;
-        max-width: 100%;
-    }
-
-    .todo-form {
-        padding: 1rem;
-    }
-
-    .todo-list {
-        width: 100%;
-        max-width: 100%;
-    }
+  .login {
+    padding: 0;
+  }
 }
