@@ -45,6 +45,7 @@ const Login = () => {
     <div className="login">
       <section>
         <form onSubmit={submitHandler}>
+          <h1 style={{ alignItems: "center", color: "darkgreen" }}>LOGIN</h1>
           <input
             type="email"
             placeholder="Email"
