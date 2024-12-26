@@ -1,15 +1,77 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fafafa;
+    /* Light background for login */
+    padding: 0 2rem;
+}
+
 .login>section {
-    @include container(900px, unset, 2rem);
-    min-height: 80%;
-    background-color: $color2;
+    background-color: #ffffff;
+    /* White background for the login form */
+    padding: 3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    /* To keep the form compact and centered */
+}
 
-    >form {
-        @include flexBox(column, center, flex-start, 2rem);
-        @include inputs;
+.login>section h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-        button {
-            @include styledText(0.9rem);
-            @include myButton(18.75rem, 1rem);
-        }
-    }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+form input {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+}
+
+form input:focus {
+    border-color: #0056b3;
+}
+
+form button {
+    background-color: #0056b3;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #003b73;
+}
+
+form .signup-link {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+form .signup-link a {
+    color: #0056b3;
+    font-weight: 500;
+}
+
+form .signup-link a:hover {
+    text-decoration: underline;
 }
