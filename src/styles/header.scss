@@ -1,0 +1,33 @@
+.header {
+    background-color: #f5f5f5;
+    /* Assuming $color3 translates to this */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    width: 100%;
+}
+
+.header>div h2 {
+    text-transform: uppercase;
+    color: #333;
+    /* Assuming $color2 translates to this */
+    font-weight: 400;
+}
+
+.header>article {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.header>article>a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    /* Assuming @include styledText and @include myButton */
+    border-radius: 5px;
+    margin-right: 1rem;
+    transition: background-color 0.3s;
+}
